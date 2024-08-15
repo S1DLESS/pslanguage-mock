@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang={{lang}}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    {{#each css}}
+    <link rel="stylesheet" href={{this}}>
+    {{/each}}
+    <title>{{siteTitle}} - PSLanguage</title>
+</head>
+<body theme="light">
+    <script src="../../js/theme.js"></script>
+    <header>
+        <div class="container header-container">
+            <a class="homepage-link homepage-link_gamepage" href="/">PSLanguage</a>
+            {{>headerBtns}}
+        </div>
+    </header>
+    <div class="container main-container">
+        <div class="game{{#unless title}} game_not-found{{/unless}}">
+            {{#if title}}
+                {{>gameInfo}}
+            {{else}}
+                <img class="not-found-icon" src="../../icons/not-found.png" alt="not-found-icon">
+                <h1>{{t 'text.game-not-found'}}</h1>
+            {{/if}}
+        </div>
+    </div>
+    <footer class="copyright">© 2024 PSLanguage. All rights reserved.</footer>
+    {{#each js}}
+    <script src={{this}}></script>
+    {{/each}}
+</body>
+</html>

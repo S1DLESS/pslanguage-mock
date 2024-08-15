@@ -1,0 +1,41 @@
+{
+  "subtitle": "Play in your language!",
+  "game-input-placeholder": "What game are you looking for",
+  "language-select-placeholder": "In what language",
+  "all-languages-option": "-All languages-",
+  "platform-select-placeholder": "Platform",
+  "all-platforms-option": "All platforms",
+  "game-type": {
+    "game": "Game",
+    "dlc": "DLC"
+  },
+  "audio": "Audio ({count}):",
+  "interface": "Interface ({count}):",
+  "availability-in-regions": "Available in {regions}",
+  "language-availability-in-regions": "{language} is available in {regions}:",
+  "load-more-button-text": "Load more",
+  "no-games": "Nothing found :(",
+  "game-not-found": "Game not found",
+  "platforms": "Platforms:",
+  "filter-by-language": "Filter by language:",
+  "reset-parameters": "Reset settings",
+  "sort-by": "Sort by:",
+  "sorting-options": {
+    "default": "-Default-",
+    "country-asc": "Country (A-Z)",
+    "country-desc": "Country (Z-A)",
+    "price-asc": "Price (cheaper)",
+    "price-desc": "Price (expensive)",
+    "audio-asc": "Audio (ASC)",
+    "audio-desc": "Audio (DESC)",
+    "interface-asc": "Interface (ASC)",
+    "interface-desc": "Interface (DESC)"
+  },
+  "th": {
+    "country": "Country",
+    "price": "Price",
+    "audio": "Audio",
+    "interface": "Interface"
+  },
+  "no-data": "N/D"
+}

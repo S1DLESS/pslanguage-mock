@@ -1,0 +1,14 @@
+<div class="header-btns">
+    <div class="site-language-btn-container">
+        <button class="btn" id="site-language-btn">{{toUpperCase lang}}</button>
+        <div class="site-language-popup">
+            {{#each siteLanguages}}
+            <a class="site-language-popup__link" href={{this.link}}>
+                <img class="flag-icon" src={{this.imgSrc}} alt="{{this.imgAlt}}">
+                <span>{{this.name}}</span>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+    <button class="btn" id="site-theme-btn">Dark</button>
+</div>

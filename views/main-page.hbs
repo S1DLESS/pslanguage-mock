@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang={{lang}}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    {{#each css}}
+    <link rel="stylesheet" href={{this}}>
+    {{/each}}
+    <title>PSLanguage - {{t 'text.subtitle'}}</title>
+</head>
+<body theme="light">
+    <script src="../../js/theme.js"></script>
+    <header class="container mainpage-header">
+        {{>headerBtns}}
+        <div class="site-name">
+            <a class="homepage-link" href="/{{lang}}">
+                <h1 class="site-name__title">PSLanguage</h1>
+            </a>
+            <p class="site-name__subtitle">{{t 'text.subtitle'}}</p>
+        </div>
+    </header>
+    <div class="container mainpage-container">
+        <form class="search">
+            <input class="search-form search-game" type="text" placeholder="{{t 'text.game-input-placeholder'}}" />
+            <select class="search-form search-language">
+                <option value="all" selected hidden>{{t 'text.language-select-placeholder'}}</option>
+                <option value="all">{{t 'text.all-languages-option'}}</option>
+                {{#each languages}}
+                    <option value="{{this.value}}">{{this.text}}</option>
+                {{/each}}
+            </select>
+            <select class="search-form search-platform">
+                <option value="all" selected hidden>{{t 'text.platform-select-placeholder'}}</option>
+                <option value="all">{{t 'text.all-platforms-option'}}</option>
+                {{#each platforms}}
+                    <option value="{{this.value}}">{{this.text}}</option>
+                {{/each}}
+            </select>
+        </form>
+        <div class="games">
+            <div class="not-found">{{t 'text.no-games'}}</div>
+            <div class="transcript" data-page="home-page"></div>
+
+            {{#each games}}
+                {{> game games=.}}
+            {{/each}}
+
+        </div>
+        <button class="load-more-btn">{{t 'text.load-more-button-text'}}</button>
+    </div>
+    <footer class="copyright">© 2024 PSLanguage. All rights reserved.</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{#each js}}
+    <script src={{this}}></script>
+    {{/each}}
+</body>
+</html>

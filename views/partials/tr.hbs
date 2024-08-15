@@ -1,0 +1,84 @@
+<tr data-id="{{this.id}}">
+    <td class="cell country-cell">
+        <img class="flag-icon" src={{this.countryFlagSrc}} alt={{this.countryFlagAlt}}>
+        <span class="country-name">{{this.countryName}}</span>
+    </td>
+    
+    {{#if this.price}}
+    <td class="cell price-cell">
+        <span class="usd-price">(${{this.usdPrice}})</span>
+        <a href={{this.link}} target="_blank">{{this.price}}</a>
+    </td>
+    {{else}}
+    <td class="cell price-cell unavailable-cell">{{t 'text.no-data'}}</td>
+    {{/if}}
+
+    {{#if this.audio}}
+    <td class="cell audio-cell">
+        <div class="flags">
+            {{#each this.audio}}
+              <img class="flag-icon language-icon" src={{this.src}} alt={{this.alt}} data-language="{{this.language}}">
+            {{/each}}
+        </div>
+    </td>
+    {{else}}
+    <td class="cell audio-cell unavailable-cell">{{t 'text.no-data'}}</td>
+    {{/if}}
+
+    {{#if this.interface}}
+    <td class="cell interface-cell">
+        <div class="flags">
+            {{#each this.interface}}
+              <img class="flag-icon language-icon" src={{this.src}} alt={{this.alt}} data-language="{{this.language}}">
+            {{/each}}
+        </div>
+    </td>
+    {{else}}
+    <td class="cell interface-cell unavailable-cell">{{t 'text.no-data'}}</td>
+    {{/if}}
+
+    <td class="cell mobile-country-and-price-cell">
+        <div>
+            <img class="flag-icon" src={{this.countryFlagSrc}} alt={{this.countryFlagAlt}}>
+            <span class="country-name">{{this.countryName}}</span>
+        </div>
+
+        {{#if this.price}}
+        <div>
+            <span class="usd-price">(${{this.usdPrice}})</span>
+            <a href={{this.link}} target="_blank">{{this.price}}</a>
+        </div>
+        {{else}}
+        <div class="unavailable-cell">{{t 'text.no-data'}}</div>
+        {{/if}}
+
+    </td>
+    <td class="cell mobile-language-cell">
+        <div class="audio-languages-number">{{this.audioLanguages}}</div>
+
+        {{#if this.audio}}
+        <ul class="language-list language-list_audio language-list_game-page-margin">
+            {{#each this.audio}}
+                <li class="language-list__item">
+                    <img class="flag-icon language-icon" src={{this.src}} alt={{this.alt}} data-language="{{this.language}}">
+                    <span class="language-list__text">{{this.language}}</span>
+                </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+
+        <div class="interface-languages-number language-list_game-page-margin">{{this.interfaceLanguages}}</div>
+
+        {{#if this.interface}}
+        <ul class="language-list language-list_interface language-list_game-page-margin">
+            {{#each this.interface}}
+                <li class="language-list__item">
+                    <img class="flag-icon language-icon" src={{this.src}} alt={{this.alt}} data-language="{{this.language}}">
+                    <span class="language-list__text">{{this.language}}</span>
+                </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+        
+    </td>
+</tr>

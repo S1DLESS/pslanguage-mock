@@ -1,0 +1,82 @@
+<div class="info-and-filters">
+    <div class="img-container">
+        <img class="game__img" src={{imgSrc}} alt="{{imgAlt}}">
+        <div class="game__mobile-info">
+            <div class="game__type">{{type}}</div>
+            <div class="game__title">{{title}}</div>
+            <div class="game__publisher">{{publisher}}</div>
+        </div>
+    </div>
+    <div class="game__info">
+        <div class="game__type">{{type}}</div>
+        <div class="game__title">{{title}}</div>
+        <div class="game__publisher">{{publisher}}</div>
+    </div>
+    <div class="filters">
+        <div class="filter filter-platform">
+            <span>{{t 'text.platforms'}}</span>
+            <div class="filter">
+                {{#each platforms}}
+                    <div class="game__platform game__platform_{{this.class}} selected">{{this.name}}</div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="filter-language-and-reset-btn">
+            <div class="filter filter-language">
+                <span>{{t 'text.filter-by-language'}}</span>
+                <form class="filter-sort-form">
+                    <select class="btn filter-sort-select language-select">
+                        <option value="all">{{t 'text.all-languages-option'}}</option>
+                        {{#each languages}}
+                            <option value="{{this.value}}">{{this.text}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+            <button class="btn reset-btn">
+                <img src="../../icons/close.png" alt="close_icon" width="13px">
+                <span>{{t 'text.reset-parameters'}}</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="languages-table-container">
+    <form class="sort-form">
+        <span>{{t 'text.sort-by'}} </span>
+        <select class="btn filter-sort-select" id="sort-select">
+            <option value="">{{t 'text.sorting-options.default'}}</option>
+            <option value="country-asc">{{t 'text.sorting-options.country-asc'}}</option>
+            <option value="country-desc">{{t 'text.sorting-options.country-desc'}}</option>
+            <option value="price-asc">{{t 'text.sorting-options.price-asc'}}</option>
+            <option value="price-desc">{{t 'text.sorting-options.price-desc'}}</option>
+            <option value="audio-asc">{{t 'text.sorting-options.audio-asc'}}</option>
+            <option value="audio-desc">{{t 'text.sorting-options.audio-desc'}}</option>
+            <option value="interface-asc">{{t 'text.sorting-options.interface-asc'}}</option>
+            <option value="interface-desc">{{t 'text.sorting-options.interface-desc'}}</option>
+        </select>
+    </form>
+    <div class="transcript" data-page="game-page"></div>
+    <table class="game-languages">
+        <thead>
+            <tr>
+                <th class="th-country">
+                    <button id="sort-country" class="th-button no-sort">{{t 'text.th.country'}}</button>
+                </th>
+                <th class="th-price">
+                    <button id="sort-price" class="th-button no-sort">{{t 'text.th.price'}}</button>
+                </th>
+                <th class="th-audio">
+                    <button id="sort-audio" class="th-button no-sort">{{t 'text.th.audio'}}</button>
+                </th>
+                <th class="th-interface">
+                    <button id="sort-interface" class="th-button no-sort">{{t 'text.th.interface'}}</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each trows}}
+                {{> tr trows=.}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>

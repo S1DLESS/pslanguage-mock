@@ -1,0 +1,35 @@
+<div class="game">
+    <a class="game__img" href={{this.link}}>
+        <img src={{this.imgSrc}} alt={{this.imgAlt}}>
+    </a>
+    <div class="game__header">
+        <a class="game__title" href={{this.link}}>{{this.title}}</a>
+        <div class="game__type">{{this.type}}</div>
+    </div>
+    <div class="game__platforms">
+        {{#each this.platforms}}
+        <div class="game__platform game__platform_{{this.class}}">{{this.name}}</div>
+        {{/each}}
+    </div>
+    <div class="game__languages">
+        <div class="audio-languages-number">{{this.audioLanguagesNumber}}</div>
+        <ul class="language-list language-list_audio">
+            {{#each this.audioLanguages}}
+            <li class="language-list__item">
+                <img class="flag-icon language-icon" src={{this.iconSrc}} alt={{this.iconAlt}} data-language="{{this.name}}">
+                <span class="language-list__text">{{this.name}}</span>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="interface-languages-number">{{this.interfaceLanguagesNumber}}</div>
+        <ul class="language-list language-list_interface">
+            {{#each this.interfaceLanguages}}
+            <li class="language-list__item">
+                <img class="flag-icon language-icon" src={{this.iconSrc}} alt={{this.iconAlt}} data-language="{{this.name}}">
+                <span class="language-list__text">{{this.name}}</span>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="regions-number">{{this.regionsNumber}}</div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "subtitle": "Играй на своём языке!",
+  "game-input-placeholder": "Какую игру вы хотите найти",
+  "language-select-placeholder": "На каком языке",
+  "all-languages-option": "-Все языки-",
+  "platform-select-placeholder": "Платформа",
+  "all-platforms-option": "Все платформы",
+  "game-type": {
+    "game": "Игра",
+    "dlc": "DLC"
+  },
+  "audio": "Аудио ({count}):",
+  "interface": "Интерфейс ({count}):",
+  "availability-in-regions": "Доступно в {regions}",
+  "language-availability-in-regions": "{language} доступен в {regions}:",
+  "load-more-button-text": "Загрузить ещё",
+  "no-games": "Ничего не найдено :(",
+  "game-not-found": "Игра не найдена",
+  "platforms": "Платформы:",
+  "filter-by-language": "Фильтрация по языку:",
+  "reset-parameters": "Сброс параметров",
+  "sort-by": "Сортировать по:",
+  "sorting-options": {
+    "default": "-Умолчанию-",
+    "country-asc": "Стране (А-Я)",
+    "country-desc": "Стране (Я-А)",
+    "price-asc": "Цене (дешевле)",
+    "price-desc": "Цене (дороже)",
+    "audio-asc": "Аудио (по возрастанию)",
+    "audio-desc": "Аудио (по убыванию)",
+    "interface-asc": "Интерфейс (по возрастанию)",
+    "interface-desc": "Интерфейс (по убыванию)"
+  },
+  "th": {
+    "country": "Страна",
+    "price": "Цена",
+    "audio": "Аудио",
+    "interface": "Интерфейс"
+  },
+  "no-data": "Н/Д"
+}
