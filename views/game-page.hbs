@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
     {{#each css}}
     <link rel="stylesheet" href={{this}}>
     {{/each}}
     <title>{{siteTitle}} - PSLanguage</title>
 </head>
-<body theme="light">
-    <script src="../../js/theme.js"></script>
+<body theme={{theme}}>
     <header>
         <div class="container header-container">
             <a class="homepage-link homepage-link_gamepage" href="/">PSLanguage</a>
@@ -23,7 +22,7 @@
                 {{>gameInfo}}
             {{else}}
                 <img class="not-found-icon" src="../../icons/not-found.png" alt="not-found-icon">
-                <h1>{{t 'text.game-not-found'}}</h1>
+                <h1 class="not-found-text">{{t 'text.game-not-found'}}</h1>
             {{/if}}
         </div>
     </div>

@@ -1,4 +1,4 @@
-window.onresize = function (e) {
+window.onresize = function () {
     moveOnResizeWindow({
         element: languagePopup,
         defaultStyleLeft: defaultLanguagePopupLeft
@@ -34,8 +34,11 @@ document.onclick = function(e) {
 
 
 // theme
-// (theme.js) const body = document.querySelector('body')
+const body = document.querySelector('body')
 const themeBtn = document.querySelector('#site-theme-btn')
+const buttons = document.querySelectorAll('.btn')
+let buttonsTimeout
+
 if (body.getAttribute('theme') === 'light') {
     themeBtn.innerText = 'Dark'
 } else {
@@ -43,15 +46,28 @@ if (body.getAttribute('theme') === 'light') {
 }
 
 themeBtn.onclick = function() {
+    const cookieSettings = 'path=/;max-age=2592000'
     if (body.getAttribute('theme') === 'light') {
         themeBtn.innerText = 'Light'
         body.setAttribute('theme', 'dark')
-        localStorage.setItem('theme', 'dark')
+        document.cookie = `theme=dark;${cookieSettings}`
     } else {
         themeBtn.innerText = 'Dark'
         body.setAttribute('theme', 'light')
-        localStorage.setItem('theme', 'light')
+        document.cookie = `theme=light;${cookieSettings}`
     }
+
+    if (buttonsTimeout) {
+        clearTimeout(buttonsTimeout)
+    }
+    buttons.forEach(btn => {
+        btn.style.transition = "all 0.5s ease-in"
+    })
+    buttonsTimeout = setTimeout(() => {
+        buttons.forEach(btn => {
+            btn.style.transition = null
+        })
+    }, 500)
 }
 
 
@@ -64,16 +80,16 @@ const homePageContainer = document.querySelector('.games')
 let defaultTranscriptLeft = transcript.style.left ? +transcript.style.left.match(/[0-9.]+/)[0] : 0
 
 function moveTranscript(event, container) {
-    const containerBoudingClientRect = container.getBoundingClientRect()
-    const pixelsToRight = event.x - containerBoudingClientRect.x + 10
-    const pixelsDown = event.y - containerBoudingClientRect.y + 15
+    const containerBoundingClientRect = container.getBoundingClientRect()
+    const pixelsToRight = event.x - containerBoundingClientRect.x + 10
+    const pixelsDown = event.y - containerBoundingClientRect.y + 15
 
     const transcriptBoundingClientRect = transcript.getBoundingClientRect()
 
-    const rightPointInPixels = ((document.documentElement.clientWidth - 5) - transcriptBoundingClientRect.width) - containerBoudingClientRect.x
+    const rightPointInPixels = ((document.documentElement.clientWidth - 5) - transcriptBoundingClientRect.width) - containerBoundingClientRect.x
     transcript.style.left = (pixelsToRight > rightPointInPixels ? rightPointInPixels : pixelsToRight) + 'px'
 
-    const bottomPointInPixels = ((document.documentElement.clientHeight - 5) - transcriptBoundingClientRect.height) - containerBoudingClientRect.y
+    const bottomPointInPixels = ((document.documentElement.clientHeight - 5) - transcriptBoundingClientRect.height) - containerBoundingClientRect.y
     transcript.style.top = (pixelsDown > bottomPointInPixels ? bottomPointInPixels : pixelsDown) + 'px'
 
     defaultTranscriptLeft = (pixelsToRight > rightPointInPixels ? rightPointInPixels : pixelsToRight)
@@ -124,7 +140,8 @@ const config = {
     paddingLeft: 5,
     paddingTop: 7.5,
     paddingBottom: 7.5,
-    mobileBreakpoint: 800
+    mobileBreakpoint: 800,
+    darkThemeTransition: '0.5s ease-in'
 }
 
 let liHeight = li[0].getBoundingClientRect().height
@@ -188,7 +205,7 @@ function initUl(ul) {
     if (!ul.classList.contains('language-list_open')) {
         ul.style.height = collapsedListHeight
     }
-    ul.style.transition = `all ${config.duration}s linear`
+    ul.style.transition = `height ${config.duration}s linear, background-color ${config.darkThemeTransition}`
     items.forEach((item, index) => {
         item.style.left = (item.querySelector('img').offsetWidth + config.marginInWidth) * index + config.paddingLeft + 'px'
         item.style.transition = `all ${(config.duration / (numberOfLanguages - 1)) * index}s ${config.duration - (config.duration / (numberOfLanguages - 1)) * index}s linear`
@@ -206,7 +223,7 @@ function openUl(ul) {
         items.forEach((item, index) => {
             item.style.top = config.paddingTop + ((liHeight + config.marginInHeight) * index) + 'px'
             const transitionDelay = (liHeight + ((config.marginInHeight + liHeight) * index)) * secPerPixel
-            item.querySelector('span').style.transition = `opacity ${config.spanOpenTransitionDuration}s ${transitionDelay}s linear`
+            item.querySelector('span').style.transition = `opacity ${config.spanOpenTransitionDuration}s ${transitionDelay}s linear, color ${config.darkThemeTransition}`
         })
     }
 }
@@ -222,7 +239,7 @@ function closeUl(ul) {
         items.forEach((item, index, arr) => {
             item.style.top = null
             const transitionDelay = (config.marginInHeight + ((config.marginInHeight + liHeight) * (arr.length - index - 2))) * secPerPixel
-            item.querySelector('span').style.transition = `opacity ${config.spanCloseTransitionDuration}s ${(transitionDelay <= 0 ? 0 : transitionDelay) - config.spanCloseTransitionDuration}s linear`
+            item.querySelector('span').style.transition = `opacity ${config.spanCloseTransitionDuration}s ${(transitionDelay <= 0 ? 0 : transitionDelay) - config.spanCloseTransitionDuration}s linear, color ${config.darkThemeTransition}`
         })
     }
 }

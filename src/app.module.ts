@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { HomePageModule } from './home-page/home-page.module';
-import { GamePageModule } from './game-page/game-page.module';
-import { Currency } from './models/currency.model';
 import { ConfigModule } from '@nestjs/config';
 import { I18nModule } from 'nestjs-i18n';
 import * as path from 'path';
-import { CustomResolver } from './custom.resolver';
+import { UrlParamResolver } from './i18n/url-param.resolver';
+import { AppController } from './app.controller';
+import { HomePageService } from './home-page/home-page.service';
+import { GamePageService } from './game-page/game-page.service';
+import { GameService } from './game-page/game.service';
 
 @Module({
   imports: [
@@ -18,7 +19,6 @@ import { CustomResolver } from './custom.resolver';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      models: [Currency],
       logging: false
     }),
     I18nModule.forRoot({
@@ -28,10 +28,10 @@ import { CustomResolver } from './custom.resolver';
         watch: true
       },
       viewEngine: 'hbs',
-      resolvers: [CustomResolver]
-    }),
-    HomePageModule,
-    GamePageModule
-  ]
+      resolvers: [UrlParamResolver]
+    })
+  ],
+  controllers: [AppController],
+  providers: [HomePageService, GamePageService, GameService]
 })
 export class AppModule {}

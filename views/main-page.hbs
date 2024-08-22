@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
     {{#each css}}
     <link rel="stylesheet" href={{this}}>
     {{/each}}
     <title>PSLanguage - {{t 'text.subtitle'}}</title>
 </head>
-<body theme="light">
-    <script src="../../js/theme.js"></script>
+<body theme={{theme}}>
     <header class="container mainpage-header">
         {{>headerBtns}}
         <div class="site-name">
@@ -47,7 +46,7 @@
             {{/each}}
 
         </div>
-        <button class="load-more-btn">{{t 'text.load-more-button-text'}}</button>
+        <button class="btn load-more-btn">{{t 'text.load-more-button-text'}}</button>
     </div>
     <footer class="copyright">© 2024 PSLanguage. All rights reserved.</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
